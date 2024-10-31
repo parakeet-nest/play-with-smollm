@@ -1,0 +1,24 @@
+services:
+
+  python-workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+      args:
+        - USER_NAME=${USER}
+    volumes:
+      - ../..:/workspaces:cached      
+    command: sleep infinity
+
+  download-llm-data:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "host.docker.internal:11434/api/pull", "-d", "{\"name\": \"qwen2.5:0.5b\"}"]
+
+  download-qwen-data:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "host.docker.internal:11434/api/pull", "-d", "{\"name\": \"qwen2.5:0.5b\"}"]
+
+  download-tinydolphin-data:
+    image: curlimages/curl:8.6.0
+    entrypoint: ["curl", "host.docker.internal:11434/api/pull", "-d", "{\"name\": \"tinydolphin\"}"]
+

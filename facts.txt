@@ -1,0 +1,4 @@
+Context:
+Philippe Charrière is a Solution Architect at 🐳 Docker.
+Palmipod is a purple blob expert with 💜 WASM.
+KeegOrg is a monster in the 🎲 RPG Game "Chronicle of Swords".
