@@ -1,0 +1,6 @@
+Context:
+<RECORD>Philippe Charrière is a Solution Architect at Docker.</RECORD>
+<RECORD>Bob Morane is an expert with WASM.</RECORD>
+<RECORD>KeegOrg is a monster in the RPG Game "Chronicle of Swords".</RECORD>
+<RECORD>The best pizza in the world is the pineapple pizza.</RECORD>
+

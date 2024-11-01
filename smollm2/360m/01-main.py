@@ -1,14 +1,10 @@
 from ollama import Client 
 
 #ollama_client = Client(host='http://host.docker.internal:11434')
-ollama_client = Client(host='http://t800.local:11434')
 
+# This is a RPi 4 running the Ollama server
+ollama_client = Client(host='http://t1000.local:11434')
 
-#instructions = """
-#"""
-
-#context="""
-#"""
 
 while True:
     user_input = input("🤖 (type 'bye' to exit):> ")
@@ -23,20 +19,17 @@ while True:
         with open("instructions.txt", "r") as file:
            instructions = file.read()
 
-        #print(context)
-        #print(instructions)
-
         stream = ollama_client.chat(
-            model='smollm:135m',
+            model='smollm2:360m',
             messages=[
               {'role': 'system', 'content': instructions},
               {'role': 'system', 'content': context},
               {'role': 'user', 'content': "Question: " + user_input + "\n Answer in one short sentence."},
             ],
             options={
-                "temperature":0.0, # Low temperature for more focused responses
-                "top_p": 0.9, # Narrow sampling for more predictable outputs,
-                "stop": ["\n", "."],  # Stop generation at these tokens 🤔
+                "temperature":0.2, # Low temperature for more focused responses
+                "top_p": 0.5, # Narrow sampling for more predictable outputs,
+                #"stop": ["\n", "."],  # Stop generation at these tokens 
 
             },
             stream=True,
@@ -46,18 +39,3 @@ while True:
           print(chunk['message']['content'], end='', flush=True)
 
         print("\n")
-
-"""
-[Brief] Who is sarah connor in the first terminator movie?
-Who is her son?
-Give me the list of all the terminator models (only the names)
-
-https://ollama.com/library/smollm:135m
-https://ollama.com/library/smollm:360m
-
-Give me some tips to improve my time management skills.
-
-What is the capital of France
-"""
-
-# 🖐️ But the size of the prompt (instructions + context + memory + question) is limited
